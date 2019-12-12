@@ -3,11 +3,29 @@
 import argparse
 
 def find_max_profit(prices):
-  pass
-First commit a
+  current_min_price_so_far = prices[0]
+  max_profit_so_far = prices[1] - prices[0]
+
+  for price in prices[1:]:
+    if current_min_price_so_far > max_profit_so_far:
+      max_profit_so_far = price - current_min_price_so_far
+    if price < current_min_price_so_far:
+      current_min_price_so_far = price
+  
+  return max_profit_so_far
+
+N = [10, 9, 7, 1, 16, 12, 4]
+find_max_profit(N)
+  
+  
+ 
+    
+  
+
+
 
 if __name__ == '__main__':
-  # This is just some code to accept inputs from the command line
+   #This is just some code to accept inputs from the command line
   parser = argparse.ArgumentParser(description='Find max profit from prices.')
   parser.add_argument('integers', metavar='N', type=int, nargs='+', help='an integer price')
   args = parser.parse_args()
